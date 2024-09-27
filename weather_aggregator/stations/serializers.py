@@ -12,7 +12,8 @@ DEFAULT_WEATHER_FIELDS = {
     'pressure_hpa': None,
     'uv_index': None,
     'solar_radiation': None,
-    'timestamp': None
+    'timestamp': None,
+    'station_status': None,
 }
 
 class ABCSerializerMeta(ABCMeta, serializers.SerializerMetaclass):
@@ -23,6 +24,10 @@ class BaseWeatherDataSerializer(serializers.Serializer, metaclass=ABCSerializerM
     @abstractmethod
     def get_station_data(self, instance):
         pass
+
+    def create(self, validated_data):
+        validated_data['raw_data'] = self.initial_data
+        return super().create(validated_data)
 
     def to_representation(self, instance):
         return_raw = self.context.get('return_raw_data', False)
