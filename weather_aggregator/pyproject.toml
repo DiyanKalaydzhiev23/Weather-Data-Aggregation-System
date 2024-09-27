@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "weather-aggregator"
+version = "0.1.0"
+description = "Django application that collects and aggregates weather data from various DIY weather stations located in cities across Bulgaria."
+authors = ["Your Name <you@example.com>"]
+license = "GPL-3.0"
+readme = "README.md"
+package-mode = false
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Django = "^5.1.1"
+djangorestframework = "^3.15.2"
+drf-spectacular = "^0.27.2"
+psycopg2-binary = "^2.9.9"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
