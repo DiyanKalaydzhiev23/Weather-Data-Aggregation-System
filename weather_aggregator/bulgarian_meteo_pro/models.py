@@ -42,6 +42,8 @@ class BulgarianMeteoProData(models.Model):
         ]
     )
 
+    raw_data = models.JSONField()
+
     class Meta:
         indexes = [
             models.Index(fields=['city', 'timestamp']),  # optimized for filtering city and ordering by timestamp
