@@ -2,10 +2,6 @@ from django.contrib.auth.decorators import user_passes_test
 from drf_spectacular.utils import OpenApiExample
 
 
-def superuser_required(function):
-    return user_passes_test(lambda u: u.is_superuser)(function)
-
-
 example_bad_request = OpenApiExample(
     name="Validation Error Example",
     value={
@@ -14,3 +10,11 @@ example_bad_request = OpenApiExample(
     },
     description="Example of a validation error response"
 )
+
+
+def superuser_required(function):
+    return user_passes_test(lambda u: u.is_superuser)(function)
+
+
+def fahrenheit_to_celsius(fahrenheit: float):
+    return (fahrenheit - 32) / 1.8

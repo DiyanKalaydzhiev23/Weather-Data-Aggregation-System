@@ -1,8 +1,6 @@
 from django.db import models
+from bulgarian_meteo_pro.choices import StationStatusChoices
 
-# Create your models here.
-
-from django.db import models
 
 class BulgarianMeteoProData(models.Model):
     station_id = models.CharField(
@@ -36,10 +34,7 @@ class BulgarianMeteoProData(models.Model):
 
     station_status = models.CharField(
         max_length=20,
-        choices=[
-            ('active', 'Active'),
-            ('inactive', 'Inactive'),
-        ]
+        choices=StationStatusChoices.choices
     )
 
     raw_data = models.JSONField()

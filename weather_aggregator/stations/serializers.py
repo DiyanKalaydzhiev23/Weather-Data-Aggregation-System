@@ -1,6 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from rest_framework import serializers
 
+
 DEFAULT_WEATHER_FIELDS = {
     'station_id': None,
     'city': None,
@@ -11,9 +12,8 @@ DEFAULT_WEATHER_FIELDS = {
     'wind_speed_kph': None,
     'pressure_hpa': None,
     'uv_index': None,
-    'solar_radiation': None,
     'timestamp': None,
-    'station_status': None,
+    'is_active': None,
 }
 
 class ABCSerializerMeta(ABCMeta, serializers.SerializerMetaclass):
