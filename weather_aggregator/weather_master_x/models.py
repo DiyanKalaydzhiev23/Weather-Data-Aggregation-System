@@ -18,15 +18,27 @@ class WeatherMasterX(models.Model):
 
     recorded_at = models.DateTimeField()
 
-    temp_fahrenheit = models.FloatField()
+    temp_fahrenheit = models.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
 
-    humidity_percent = models.FloatField()
+    humidity_percent = models.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
 
-    pressure_hpa = models.FloatField()
+    pressure_hpa = models.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
 
     uv_index = models.IntegerField()
 
-    rain_mm = models.FloatField()
+    rain_mm = models.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
 
     operational_status = models.CharField(
         max_length=20,

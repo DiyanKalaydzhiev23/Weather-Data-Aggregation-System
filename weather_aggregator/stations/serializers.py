@@ -1,8 +1,25 @@
 from abc import ABCMeta, abstractmethod
+from datetime import datetime
+from decimal import Decimal
+from typing import TypedDict, Optional
 from rest_framework import serializers
 
 
-DEFAULT_WEATHER_FIELDS = {
+class DefaultWeatherFields(TypedDict, total=False):
+    station_id: Optional[str]
+    city: Optional[str]
+    latitude: Optional[float]
+    longitude: Optional[float]
+    temperature_celsius: Optional[Decimal]
+    humidity_percent: Optional[Decimal]
+    wind_speed_kph: Optional[Decimal]
+    pressure_hpa: Optional[float]
+    uv_index: Optional[int]
+    timestamp: Optional[datetime]
+    is_active: Optional[bool]
+
+
+DEFAULT_WEATHER_FIELDS: DefaultWeatherFields = {
     'station_id': None,
     'city': None,
     'latitude': None,

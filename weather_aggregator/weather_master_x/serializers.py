@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from stations.serializers import BaseWeatherDataSerializer
+from stations.serializers import BaseWeatherDataSerializer, DefaultWeatherFields
 from weather_aggregator.utils import fahrenheit_to_celsius
 from weather_master_x.choices import StationStatusChoices
 from weather_master_x.models import WeatherMasterX
@@ -28,7 +28,7 @@ class WeatherMasterXSerializer(BaseWeatherDataSerializer, serializers.ModelSeria
 
         return super().to_internal_value(data)
 
-    def get_station_data(self, instance: WeatherMasterX):
+    def get_station_data(self, instance: WeatherMasterX) -> DefaultWeatherFields:
         return {
             'station_id': instance.station_identifier,
             'city': instance.city_name,

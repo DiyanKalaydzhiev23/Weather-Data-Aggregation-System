@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from bulgarian_meteo_pro.choices import StationStatusChoices
 from bulgarian_meteo_pro.models import BulgarianMeteoProData
-from stations.serializers import BaseWeatherDataSerializer
+from stations.serializers import BaseWeatherDataSerializer, DefaultWeatherFields
 
 
 class BulgarianMeteoProDataSerializer(BaseWeatherDataSerializer, serializers.ModelSerializer):
@@ -9,7 +9,7 @@ class BulgarianMeteoProDataSerializer(BaseWeatherDataSerializer, serializers.Mod
         model = BulgarianMeteoProData
         exclude = ('raw_data', )
 
-    def get_station_data(self, instance: BulgarianMeteoProData):
+    def get_station_data(self, instance: BulgarianMeteoProData) -> DefaultWeatherFields:
         return {
             'station_id': instance.station_id,
             'city': instance.city,
