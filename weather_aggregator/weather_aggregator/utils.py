@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.contrib.auth.decorators import user_passes_test
 from drf_spectacular.utils import OpenApiExample
 
@@ -16,5 +18,5 @@ def superuser_required(function):
     return user_passes_test(lambda u: u.is_superuser)(function)
 
 
-def fahrenheit_to_celsius(fahrenheit: float):
-    return (fahrenheit - 32) / 1.8
+def fahrenheit_to_celsius(fahrenheit: Decimal):
+    return (fahrenheit - 32) / Decimal(1.8)

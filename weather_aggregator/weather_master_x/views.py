@@ -1,7 +1,6 @@
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import extend_schema, OpenApiResponse
 from rest_framework.generics import CreateAPIView
-
 from stations.mixins import CreateStationMixin
 from weather_aggregator.utils import example_bad_request
 from weather_master_x.models import WeatherMasterX

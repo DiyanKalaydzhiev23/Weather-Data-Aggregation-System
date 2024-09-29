@@ -13,7 +13,7 @@ class DefaultWeatherFields(TypedDict, total=False):
     temperature_celsius: Optional[Decimal]
     humidity_percent: Optional[Decimal]
     wind_speed_kph: Optional[Decimal]
-    pressure_hpa: Optional[float]
+    pressure_hpa: Optional[Decimal]
     uv_index: Optional[int]
     timestamp: Optional[datetime]
     is_active: Optional[bool]

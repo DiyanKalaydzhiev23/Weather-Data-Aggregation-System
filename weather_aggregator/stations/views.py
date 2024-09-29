@@ -1,3 +1,7 @@
+from dataclasses import asdict
+
+from drf_spectacular.types import OpenApiTypes
+from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -5,8 +9,20 @@ from weather_aggregator.serializers_mapping import WeatherSerializerFactory
 from .models import Station
 
 
+@extend_schema(
+    parameters=[
+        OpenApiParameter(
+            name='raw',
+            type=OpenApiTypes.BOOL,
+            location=OpenApiParameter.QUERY,
+            description='Set to true to return raw data, otherwise normalized data will be returned.',
+            required=False,
+        )
+    ]
+)
 @api_view(['GET'])
 def get_aggregated_weather_data(request, city_name):
+    return_raw_data = request.query_params.get('raw', 'false').lower() == 'true'
     stations = Station.objects.filter(city__iexact=city_name).select_related('content_type')
 
     if not stations.exists():
@@ -46,7 +62,7 @@ def get_aggregated_weather_data(request, city_name):
         except ValueError:
             continue
 
-        serializer = serializer_class(station_instance)
+        serializer = serializer_class(station_instance, context={'return_raw_data': return_raw_data})
         aggregated_data.append(serializer.data)
 
     if not aggregated_data:

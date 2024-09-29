@@ -29,7 +29,7 @@ class WeatherMasterX(models.Model):
     )
 
     pressure_hpa = models.DecimalField(
-        max_digits=5,
+        max_digits=10,
         decimal_places=2
     )
 
