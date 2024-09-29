@@ -162,6 +162,5 @@ cython_debug/
 #.idea/
 .idea/
 .venv/
-poetry.lock
 db.sqlite3
 
