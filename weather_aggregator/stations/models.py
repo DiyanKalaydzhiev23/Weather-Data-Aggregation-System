@@ -2,6 +2,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.db import models
 
+from stations.managers import StationManager
+
 
 class Station(models.Model):
     station_type = models.CharField(
@@ -27,6 +29,8 @@ class Station(models.Model):
     is_active = models.BooleanField(
         default=True
     )
+
+    objects = StationManager()
 
     class Meta:
         indexes = [
