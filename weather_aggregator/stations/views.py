@@ -1,11 +1,8 @@
-from dataclasses import asdict
-
 from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from weather_aggregator.serializers_mapping import WeatherSerializerFactory
 from .models import Station
 
 
