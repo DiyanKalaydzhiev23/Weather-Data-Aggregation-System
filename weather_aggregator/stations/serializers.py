@@ -39,7 +39,7 @@ class ABCSerializerMeta(ABCMeta, serializers.SerializerMetaclass):
 
 class BaseWeatherDataSerializer(serializers.Serializer, metaclass=ABCSerializerMeta):
     @abstractmethod
-    def get_station_data(self, instance):
+    def get_station_data(self, instance) -> DefaultWeatherFields:
         pass
 
     def create(self, validated_data):

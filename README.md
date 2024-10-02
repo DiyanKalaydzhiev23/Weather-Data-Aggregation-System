@@ -7,6 +7,25 @@ The solution is designed to handle data from different types of stations, with e
 
 ---
 
+## Contents
+
+---
+
+### Setup Tutorials
+
+- [Project Setup](docs/project_setup.md)
+- [Add Station](docs/add_station_tutorial.md)
+
+---
+
+### Key parts
+- [Models](docs/models.md)
+- [Serializers](docs/serializers.md)
+- [Managers](docs/managers.md)
+- [Mixins](docs/mixins.md)
+
+---
+
 ### Key Components
 
 1. Weather Data Models
