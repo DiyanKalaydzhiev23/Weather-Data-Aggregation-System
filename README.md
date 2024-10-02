@@ -53,3 +53,22 @@ The solution is designed to handle data from different types of stations, with e
 
 ---
 
+# Justification of Design Decisions
+
+## Modular Architecture
+- Each weather station is implemented as a separate Django app. This approach ensures separation of concerns, easier testing, and future maintainability.
+
+## Inheritance-Based Serializers
+- A base serializer (`BaseWeatherDataSerializer`) is used to enforce consistency across all weather station serializers. It provides a unified API structure and ensures that each serializer follows a standard representation.
+
+## Factory Pattern for Serializer Resolution
+- The `WeatherSerializerFactory` is used to dynamically determine the appropriate serializer for each station. This reduces the need for if-else statements and keeps the code more extensible as new stations are added.
+
+## Use of Generic Relationships
+- The `Station` model utilizes Django’s ContentType framework to store data across multiple weather station types. This provides a flexible way to link the generic station model to multiple station-specific models.
+
+## Data Normalization vs. Raw Data Representation
+- The decision to provide both raw and normalized data responses ensures that the API is flexible for different client needs, supporting both standard analysis and debugging use-cases.
+
+
+---
