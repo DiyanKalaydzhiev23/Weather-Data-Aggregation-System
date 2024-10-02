@@ -35,6 +35,7 @@ class Station(models.Model):
     class Meta:
         indexes = [
             models.Index(fields=['content_type', 'object_id']),
+            models.Index(fields=['city'])
         ]
 
     def __str__(self):

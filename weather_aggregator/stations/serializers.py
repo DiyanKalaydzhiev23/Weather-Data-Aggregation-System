@@ -34,7 +34,10 @@ DEFAULT_WEATHER_FIELDS: DefaultWeatherFields = {
 }
 
 class ABCSerializerMeta(ABCMeta, serializers.SerializerMetaclass):
-    pass  # Solves the meta conflicts of Serializer and ABC
+    def __new__(cls, name, bases, dct):
+        abc_instance = ABCMeta.__new__(cls, name, bases, dct)
+        serializer_instance = serializers.SerializerMetaclass.__new__(cls, name, bases, dct)
+        return serializer_instance  # Solves the meta conflicts of Serializer and ABC
 
 
 class BaseWeatherDataSerializer(serializers.Serializer, metaclass=ABCSerializerMeta):
