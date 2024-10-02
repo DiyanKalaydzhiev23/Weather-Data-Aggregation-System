@@ -8,7 +8,43 @@ from weather_master_x.serializers import WeatherMasterXSerializer
 
 
 @extend_schema(
-    request=WeatherMasterXSerializer,
+    request={
+        "application/json": {
+            "type": "object",
+            "properties": {
+                "station_identifier": {"type": "string"},
+                "location": {
+                    "type": "object",
+                    "properties": {
+                        "city_name": {"type": "string"},
+                        "coordinates": {
+                            "type": "object",
+                            "properties": {
+                                "lat": {"type": "number"},
+                                "lon": {"type": "number"}
+                            },
+                            "required": ["lat", "lon"]
+                        }
+                    },
+                    "required": ["city_name", "coordinates"]
+                },
+                "recorded_at": {"type": "string", "format": "date-time"},
+                "readings": {
+                    "type": "object",
+                    "properties": {
+                        "temp_fahrenheit": {"type": "number"},
+                        "humidity_percent": {"type": "number"},
+                        "pressure_hpa": {"type": "number"},
+                        "uv_index": {"type": "integer"},
+                        "rain_mm": {"type": "number"}
+                    },
+                    "required": ["temp_fahrenheit", "humidity_percent"]
+                },
+                "operational_status": {"type": "string"}
+            },
+            "required": ["station_identifier", "location", "recorded_at", "readings", "operational_status"]
+        }
+    },
     responses={
         201: WeatherMasterXSerializer,
         400: OpenApiResponse(
