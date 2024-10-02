@@ -9,8 +9,6 @@ The solution is designed to handle data from different types of stations, with e
 
 ## Contents
 
----
-
 ### Setup Tutorials
 
 - [Project Setup](docs/project_setup.md)
